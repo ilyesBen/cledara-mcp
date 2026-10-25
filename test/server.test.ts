@@ -80,3 +80,21 @@ test("API errors come back as tool errors, not crashes", async () => {
   assert.equal(res.isError, true);
   assert.match(text(res), /403/);
 });
+
+test("every tool only issues GETs to the read-only endpoints", async () => {
+  const { client, calls } = await connect();
+  const { tools } = await client.listTools();
+  const args: Record<string, Record<string, unknown>> = { get_invoice_url: { transactionId: transactions[0]!.id } };
+  for (const t of tools) {
+    const res = await client.callTool({ name: t.name, arguments: args[t.name] ?? {} });
+    assert.notEqual(res.isError, true, `${t.name} failed`);
+    assert.equal(t.annotations?.readOnlyHint, true, `${t.name} not marked read-only`);
+    assert.equal(t.annotations?.destructiveHint, false, `${t.name} not marked non-destructive`);
+  }
+  assert.ok(calls.length > 0);
+  const allowed = /^\/v0\/(applications|transactions|transactions\/[0-9a-f-]+\/invoice-url)$/;
+  for (const c of calls) {
+    assert.equal(c.method, "GET", `${c.url.pathname} used ${c.method}`);
+    assert.match(c.url.pathname, allowed);
+  }
+});

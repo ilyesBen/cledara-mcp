@@ -4,6 +4,17 @@ A read-only [MCP](https://modelcontextprotocol.io) server for [Cledara](https://
 
 It wraps the [Cledara public API](https://api-docs.cledara.com) (v0). That API is read-only, and so is this server: no tool can change anything in Cledara.
 
+## Read-only by design
+
+This server cannot change anything in Cledara:
+
+- **Requests:** it only ever makes HTTP `GET` requests, and only to `/v0/applications`, `/v0/transactions` and `/v0/transactions/{id}/invoice-url`. A test fails the build if any tool sends another kind of request or calls another path.
+- **Tools:** every tool is marked `readOnlyHint: true` and `destructiveHint: false`, so MCP clients know none of them have side effects.
+- **Local files:** it writes nothing to disk. The only cache is an in-memory copy of the application list.
+- **The Cledara API (v0):** it has no write endpoints at all.
+
+A Cledara API key carries all the permissions of the user who created it, and Cledara has no read-only key type. If Cledara adds write endpoints later, this server still won't call them, but the key itself could. Treat the key like a password.
+
 ## Tools
 
 | Tool | What it does |

@@ -1,6 +1,6 @@
 import { CledaraClient, type ClientOptions } from "../src/client.ts";
 
-export type Call = { url: URL; headers: Headers };
+export type Call = { url: URL; method: string | undefined; headers: Headers };
 export type Responder = (url: URL) => Response | Promise<Response>;
 
 export const FAKE_KEY = "test-key-not-real";
@@ -16,7 +16,7 @@ export function fakeClient(respond: Responder, options: Partial<ClientOptions> =
     apiKey: FAKE_KEY,
     fetch: async (input, init) => {
       const url = new URL(String(input));
-      calls.push({ url, headers: new Headers(init?.headers) });
+      calls.push({ url, method: init?.method, headers: new Headers(init?.headers) });
       return respond(url);
     },
     sleep: async (ms) => {

@@ -3,7 +3,7 @@
   "manifest_version": "0.3",
   "name": "cledara-mcp",
   "display_name": "Cledara",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Ask Claude about your Cledara SaaS applications, spend, upcoming payments and missing invoices. Read-only.",
   "long_description": "Connects Claude to your Cledara workspace through the official Cledara API, using your own API key. Claude can list applications and transactions, summarise spend by application, team, owner, card or month, show upcoming payments, find card payments missing invoices, and fetch invoice download links.\n\nThe extension is read-only: it cannot change anything in Cledara. It runs on your computer and talks directly to api.cledara.com. Your API key is stored in your system's secure credential storage.",
   "author": {

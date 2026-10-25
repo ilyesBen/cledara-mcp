@@ -120,8 +120,10 @@ export class CledaraClient {
       await this.#throttle();
       let res: Response;
       try {
+        // GET is the only request this server ever makes: it must stay read-only.
         res = await this.#fetch(url, {
-          headers: { Authorization: `Bearer ${this.#apiKey}`, Accept: "application/json" },
+          method: "GET",
+          headers:{ Authorization: `Bearer ${this.#apiKey}`, Accept: "application/json" },
         });
       } catch (err) {
         throw new CledaraError(`Network error calling Cledara ${path}: ${(err as Error).message}`);

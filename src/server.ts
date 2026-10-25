@@ -27,7 +27,7 @@ const applicationIdsArg = z
 const typesArg = z.array(z.enum(TRANSACTION_TYPES as [string, ...string[]]));
 
 export function createServer(client: CledaraClient, now: () => Date = () => new Date()): McpServer {
-  const server = new McpServer({ name: "cledara", version: "0.1.0" });
+  const server = new McpServer({ name: "cledara", version: "0.1.1" });
 
   const range = (from?: string, to?: string) => {
     const fallback = defaultRange(now());
