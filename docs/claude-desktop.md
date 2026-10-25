@@ -8,7 +8,7 @@ Claude can only read your Cledara data. It cannot change anything in Cledara.
 
 - **Claude Desktop**, installed and signed in. Download it from [claude.ai/download](https://claude.ai/download).
 - **A Cledara login with the right role.** Your role must be **SaaS Admin/Finance** or **Spend Admin/Accountant**. If you're not sure, ask your Cledara admin.
-- **The `cledara.mcpb` file.** Download it from [the latest release](https://github.com/ilyesBen/cledara-mcp/releases/latest): under **Assets**, click `cledara.mcpb`.
+- **The `cledara.mcpb` file.** [**Click here to download it**](https://github.com/ilyesBen/cledara-mcp/releases/latest/download/cledara.mcpb). The link always gets the newest version.
 
 You don't need to install anything else.
 
@@ -63,7 +63,7 @@ You're done. 🎉
 
 ## Updating to a new version
 
-Download the new `cledara.mcpb` and double-click it, just as you did the first time. Your API key is kept.
+[Download the newest `cledara.mcpb`](https://github.com/ilyesBen/cledara-mcp/releases/latest/download/cledara.mcpb) and double-click it, just as you did the first time. Your API key is kept.
 
 ## Removing it later
 

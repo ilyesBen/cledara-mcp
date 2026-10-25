@@ -55,7 +55,7 @@ claude mcp add --scope user cledara -- npx -y github:ilyesBen/cledara-mcp
 
 ### Claude Desktop (one-click extension)
 
-Download `cledara.mcpb` from the [latest release](https://github.com/ilyesBen/cledara-mcp/releases/latest) page and double-click it. Claude Desktop asks for your API key and stores it in the system keychain. Node.js isn't needed.
+[Download `cledara.mcpb`](https://github.com/ilyesBen/cledara-mcp/releases/latest/download/cledara.mcpb) and double-click it. Claude Desktop asks for your API key and stores it in the system keychain. Node.js isn't needed.
 
 There's a step-by-step guide for non-technical users in [docs/claude-desktop.md](docs/claude-desktop.md).
 
