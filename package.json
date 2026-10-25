@@ -1,0 +1,50 @@
+{
+  "name": "cledara-mcp",
+  "version": "0.1.0",
+  "description": "Read-only MCP server for the Cledara API (applications, transactions, invoices, spend, renewals)",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "cledara-mcp": "dist/index.js"
+  },
+  "engines": {
+    "node": ">=20.12"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "prepare": "npm run build",
+    "start": "node dist/index.js",
+    "dev": "node src/index.ts",
+    "test": "node --test test/*.test.ts",
+    "typecheck": "tsc",
+    "mcpb": "scripts/build-mcpb.sh"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@anthropic-ai/mcpb": "^2.1.2",
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2"
+  },
+  "files": [
+    "dist",
+    ".env.example",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilyesBen/cledara-mcp.git"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "cledara",
+    "saas",
+    "spend-management"
+  ],
+  "license": "MIT",
+  "author": "Ilyes Benmansour",
+  "homepage": "https://github.com/ilyesBen/cledara-mcp#readme"
+}

@@ -1,0 +1,28 @@
+name: Release
+
+# Push a tag like v0.2.0 (matching package.json's version) to publish
+# cledara.mcpb as a GitHub Release asset.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  mcpb:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - name: Check tag matches package.json version
+        run: test "v$(node -p 'require("./package.json").version')" = "$GITHUB_REF_NAME"
+      - run: npm run mcpb
+      - run: gh release create "$GITHUB_REF_NAME" build/cledara.mcpb --title "$GITHUB_REF_NAME" --generate-notes
+        env:
+          GH_TOKEN: ${{ github.token }}
